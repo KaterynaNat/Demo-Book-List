@@ -25,16 +25,24 @@ A simple React + TypeScript CRUD application to manage a list of books with filt
    git clone https://github.com/yourusername/book-list-crud.git
    cd book-list-crud
    ```
-   Open the Project Folder in Terminal
-   cd book-management-app
-4. Install All Required Dependencies
-   npm install
+   Open the Project Folder in Terminal:
+    ```bash
+    cd book-management-app
+    ```
+4. Install All Required Dependencies:
+    ```bash
+    npm install
+     ```
 5. Start the Data Server
    The app uses a fake server to store book data via json-server. To start it:
-   npx json-server --watch db.json --port 3000
+    ```bash
+    npx json-server --watch db.json --port 3000
+     ```
    After starting, the server will be available at: http://localhost:3000/books
-6. Start the App
+6. Start the App:
+   ```bash
    npm run dev
+   ```
    Open your browser and go to: http://localhost:5173
 📋 How to Use the App
 🖥️ Dashboard
