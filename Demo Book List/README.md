@@ -44,38 +44,33 @@ A simple React + TypeScript CRUD application to manage a list of books with filt
    npm run dev
    ```
    Open your browser and go to: http://localhost:5173
-📋 How to Use the App
-🖥️ Dashboard
-   View the list of books in a table.
-   Use filters to display only active, deactivated, or all books.
-   Each record includes:
-   Book title.
-   Author name.
-   Category.
-   ISBN code.
-   Created and modified date.
-   Buttons for editing, deactivating/reactivating, and deleting.
-➕ Add a Book
-   Click "Add a Book".
-   Fill out the form:
-   Book title.
-   Author name.
-   Category.
-   ISBN code.
-   Click "Add a Book" to save.
-✏️ Edit a Book
-   Click "Edit" next to the book.
-   Make changes in the form and click "Edit Book".
-🔄 Deactivate/Reactivate a Book
-   Click "Deactivate" to deactivate a book.
-   Click "Re-Activate" to reactivate a book.
-🗑️ Delete a Book
-   Only deactivated books can be deleted.
-   Click "Delete" next to a deactivated book and confirm the deletion.
-📋 Design and Styling
-📱 Responsive Design
-   The app is adapted for mobile devices, tablets, and large screens.
-   On mobile devices, the book table is displayed vertically.
-🖌️ CSS and Components
-   The styling is in a graphite-green theme.
-   All components (buttons, tables, forms) have a consistent style.
+## 📋 How to Use the App
+## 🖥️ Dashboard
+   - View the list of books in a table.
+   - Use filters to display only active, deactivated, or all books.
+   - Each record includes:
+   - Book title.
+   - Author name.
+   - Category.
+   - ISBN code.
+   - Created and modified date.
+   - Buttons for editing, deactivating/reactivating, and deleting.
+## ➕ Add a Book
+   - Click "Add a Book".
+   - Fill out the form:
+   - Book title.
+   - Author name.
+   - Category.
+   - ISBN code.
+   - Click "Add a Book" to save.
+## ✏️ Edit a Book
+   - Click "Edit" next to the book.
+   - Make changes in the form and click "Edit Book".
+## 🔄 Deactivate/Reactivate a Book
+   - Click "Deactivate" to deactivate a book.
+   - Click "Re-Activate" to reactivate a book.
+## 🗑️ Delete a Book
+   - Only deactivated books can be deleted.
+   - Click "Delete" next to a deactivated book and confirm the deletion.
+## 📱 Responsive Design
+   - The app is adapted for mobile devices, tablets, and large screens.
