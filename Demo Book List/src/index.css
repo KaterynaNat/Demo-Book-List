@@ -1,3 +1,58 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+    --graphite: #2f3e46;
+    --dark-graphite: #212b30;
+    --green: #52b788;
+    --light-green: #74c69d;
+    --danger: #e63946;
+    --text-light: #f1faee;
+    --border-color: #4e5d6c;
+    --success: #06d6a0;
+  }
+  
+  body, html {
+    margin: 0;
+    padding: 0;
+    background-color: var(--graphite);
+    color: var(--text-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  
+  a {
+    color: var(--light-green);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: var(--green);
+  }
+  
+  button {
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    body {
+      font-size: 12px;
+    }
+  }
+  

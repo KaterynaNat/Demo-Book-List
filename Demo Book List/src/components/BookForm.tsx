@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useBooks } from "../App";
+import styles from "./BookForm.module.css";
 
 const BookForm: React.FC = () => {
   const { books, setBooks } = useBooks();
@@ -81,7 +82,7 @@ const BookForm: React.FC = () => {
         );
         setTimeout(() => {
           setSuccess("");
-          navigate("/");
+          navigate("/"); 
         }, 1500);
       })
       .catch((err) => {
@@ -92,20 +93,19 @@ const BookForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white shadow-md rounded p-6 my-10">
-      <h1 className="text-2xl font-bold text-center mb-6">
-        {id ? "Edit Book" : "Add a Book"}
-      </h1>
+    <div className={styles.bookForm}>
+      <h1 className={styles.title}>{id ? "Edit Book" : "Add a Book"}</h1>
 
-      {success && <p className="text-green-500 text-center mb-4">{success}</p>}
+      {success && <p className={styles.success}>{success}</p>}
+      {error && <p className={styles.error}>{error}</p>}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit}>
         <input
           name="title"
           placeholder="Book Title"
           value={formData.title}
           onChange={handleChange}
-          className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary"
+          className={styles.input}
           required
         />
         <input
@@ -113,14 +113,14 @@ const BookForm: React.FC = () => {
           placeholder="Author Name"
           value={formData.author}
           onChange={handleChange}
-          className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary"
+          className={styles.input}
           required
         />
         <select
           name="category"
           value={formData.category}
           onChange={handleChange}
-          className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary"
+          className={styles.select}
           required
         >
           <option value="">Select Category</option>
@@ -134,27 +134,21 @@ const BookForm: React.FC = () => {
           type="text"
           value={formData.isbn}
           onChange={handleChange}
-          className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary"
+          className={styles.input}
           required
         />
-        {error && <p className="text-red-500 text-sm">{error}</p>}
         <button
           type="submit"
           disabled={loading}
-          className={`w-full py-2 text-white rounded ${
-            loading ? "bg-gray-400" : "bg-primary hover:bg-primary-dark"
-          } transition duration-200`}
+          className={styles.button}
         >
           {loading ? "Saving..." : id ? "Edit Book" : "Add a Book"}
         </button>
       </form>
 
-      <Link
-        to="/"
-        className="block text-center text-primary mt-4 hover:underline"
-      >
-        Back to Dashboard
-      </Link>
+      <div className={styles.link}>
+        <Link to="/">Back to Dashboard</Link>
+      </div>
     </div>
   );
 };

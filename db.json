@@ -1,24 +1,14 @@
 {
   "books": [
     {
-      "id": "1",
-      "title": "The Great Gatsby",
-      "author": "F. Scott Fitzgerald",
-      "category": "Fiction",
-      "isbn": "9780743273565",
-      "createdAt": "2023-01-01T08:35:00Z",
+      "id": "2",
+      "title": "1984",
+      "author": "George Orwell",
+      "category": "Science",
+      "isbn": "9780451524935",
+      "createdAt": "2023-01-02T12:00:00.000Z",
       "modifiedAt": null,
       "deactivated": false
-    },
-    {
-      "id": "2",
-      "title": "A Brief History of Time",
-      "author": "Stephen Hawking",
-      "category": "Science",
-      "isbn": "9780553380163",
-      "createdAt": "2023-01-10T10:00:00Z",
-      "modifiedAt": "2023-01-15T14:00:00Z",
-      "deactivated": true
     }
   ]
 }

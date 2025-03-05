@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useBooks } from "../App";
+import styles from "./Dashboard.module.css";
 
 const formatDate = (dateString: string | null) => {
   if (!dateString) return "--";
@@ -23,7 +24,6 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     if (successMessage) {
-      console.log("Success Message Set:", successMessage);
       const timer = setTimeout(() => setSuccessMessage(""), 3000);
       return () => clearTimeout(timer);
     }
@@ -36,10 +36,10 @@ const Dashboard: React.FC = () => {
   });
 
   const handleDelete = (id: number) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this book?"
-    );
-    if (!confirmDelete) return;
+    const book = books.find((b) => b.id === id);
+    if (!book?.deactivated) return;
+
+    if (!window.confirm("Are you sure you want to delete this book?")) return;
 
     fetch(`http://localhost:3000/books/${id}`, { method: "DELETE" })
       .then(() => {
@@ -73,96 +73,82 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-text p-4">
-      <h1 className="text-2xl font-bold mb-4 text-primary text-center">
-        Dashboard
-      </h1>
+    <div className={styles.dashboard}>
+      <h1>Dashboard</h1>
 
-      {}
       {successMessage && (
-        <div className="text-center mb-4 text-green-600 transition-opacity duration-500 ease-in-out opacity-100">
-          {successMessage}
-        </div>
+        <div className={styles.successMessage}>{successMessage}</div>
       )}
 
-      <div className="mb-4 text-center">
+      <div className={styles.filter}>
         <select
-          className="border p-2 mb-2 rounded"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
+          className={styles.select}
         >
           <option value="all">Show All</option>
           <option value="active">Show Active</option>
           <option value="deactivated">Show Deactivated</option>
         </select>
-        <p className="text-sm text-gray-600">
+        <p>
           Showing {filteredBooks.length} of {books.length}
         </p>
       </div>
 
-      <div className="overflow-x-auto mb-4">
-        <table className="min-w-full bg-white shadow rounded-lg">
-          <thead className="bg-primary text-white">
-            <tr>
-              <th className="p-2">Book Title</th>
-              <th className="p-2">Author Name</th>
-              <th className="p-2">Category</th>
-              <th className="p-2">ISBN</th>
-              <th className="p-2">Created At</th>
-              <th className="p-2">Modified/Edited At</th>
-              <th className="p-2">Actions</th>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th>Book Title</th>
+            <th>Author Name</th>
+            <th>Category</th>
+            <th>ISBN</th>
+            <th>Created At</th>
+            <th>Modified/Edited At</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredBooks.map((book) => (
+            <tr
+              key={book.id}
+              className={book.deactivated ? styles.deactivated : styles.active}
+            >
+              <td>{book.title}</td>
+              <td>{book.author}</td>
+              <td>{book.category}</td>
+              <td>{book.isbn}</td>
+              <td>{formatDate(book.createdAt)}</td>
+              <td>{formatDate(book.modifiedAt)}</td>
+              <td className={`${styles.actions} ${book.deactivated ? "" : styles.actionsActive}`}>
+                <button
+                  onClick={() => navigate(`/edit/${book.id}`)}
+                  className={`${styles.button} ${styles.editButton}`}
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleDeactivate(book.id)}
+                  className={`${styles.button} ${styles.deactivateButton}`}
+                >
+                  {book.deactivated ? "Re-Activate" : "Deactivate"}
+                </button>
+                {book.deactivated && (
+                  <button
+                    onClick={() => handleDelete(book.id)}
+                    className={`${styles.button} ${styles.deleteButton}`}
+                  >
+                    Delete
+                  </button>
+                )}
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {filteredBooks.map((book) => (
-              <tr
-                key={book.id}
-                className={`border ${
-                  book.deactivated ? "bg-red-100" : "bg-white"
-                } transition`}
-              >
-                <td className="p-2">{book.title}</td>
-                <td className="p-2">{book.author}</td>
-                <td className="p-2">{book.category}</td>
-                <td className="p-2">{book.isbn}</td>
-                <td className="p-2">{formatDate(book.createdAt)}</td>
-                <td className="p-2">{formatDate(book.modifiedAt)}</td>
-                <td className="p-2 flex space-x-2">
-                  <button
-                    onClick={() => navigate(`/edit/${book.id}`)}
-                    className="text-blue-500 hover:underline"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDeactivate(book.id)}
-                    className={`${
-                      book.deactivated ? "text-green-500" : "text-yellow-500"
-                    } hover:underline`}
-                  >
-                    {book.deactivated ? "Re-Activate" : "Deactivate"}
-                  </button>
-                  {book.deactivated && (
-                    <button
-                      onClick={() => handleDelete(book.id)}
-                      className="text-red-500 hover:underline"
-                    >
-                      Delete
-                    </button>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
 
-      <Link
-        to="/add"
-        className="text-primary hover:underline text-center block mb-4"
-      >
-        Add a Book
-      </Link>
+      <div className={styles.link}>
+        <Link to="/add">Add a Book</Link>
+      </div>
     </div>
   );
 };

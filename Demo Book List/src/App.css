@@ -1,62 +1,145 @@
+:root {
+  --graphite: #2f3e46;
+  --dark-graphite: #212b30;
+  --green: #52b788;
+  --light-green: #74c69d;
+  --danger: #e63946;
+  --text-light: #f1faee;
+  --text-dark: #343a40;
+  --border-color: #4e5d6c;
+  --success: #06d6a0;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: var(--graphite);
+  color: var(--text-light);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 .app {
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 900px;
+  background-color: var(--dark-graphite);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 20px);
+  margin: 10px auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.dashboard table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
+body::-webkit-scrollbar {
+  width: 8px;
 }
 
-.dashboard table th,
-.dashboard table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+body::-webkit-scrollbar-thumb {
+  background-color: var(--green);
+  border-radius: 4px;
 }
 
-.dashboard table th {
-  background-color: #f4f4f4;
-}
-
-.dashboard select {
-  margin-bottom: 10px;
+body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--light-green);
 }
 
 .footer {
+  margin-top: auto;
   text-align: center;
+  padding: 5px 0; 
+  background-color: var(--dark-graphite);
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
   margin-top: 20px;
 }
 
-.book-form input,
-.book-form select {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 5px;
-  border: 1px solid #ccc;
+.footer-icon-link {
+  color: var(--light-green);
+  margin: 0 5px; 
+  transition: color 0.3s, transform 0.3s;
 }
 
-.book-form button {
-  padding: 5px 10px;
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  cursor: pointer;
+.footer-icon-link:hover {
+  color: var(--green);
+  transform: scale(1.1);
 }
 
-.book-form button:hover {
-  background-color: #218838;
+.footer-icon {
+  font-size: 18px;
 }
 
-.footer a {
-  text-decoration: none;
-  color: #007bff;
+.footer-text {
+  font-size: 12px; 
+  margin-top: 3px;
+  color: var(--text-light);
 }
 
-.footer a:hover {
-  text-decoration: underline;
+@media (max-width: 480px) {
+  .app {
+    max-width: 95%;
+    padding: 10px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .app {
+    max-width: 90%;
+    padding: 15px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .app {
+    max-width: 1200px;
+    padding: 20px;
+  }
+  .footer-icon {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .app {
+    max-width: 1400px;
+    padding: 20px; 
+  }
+  .footer-icon {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .app {
+    max-width: 1600px;
+    padding: 20px;
+  }
+  .footer-icon {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .app {
+    max-width: 1800px;
+    padding: 20px;
+  }
+  .footer-icon {
+    font-size: 26px;
+  }
 }

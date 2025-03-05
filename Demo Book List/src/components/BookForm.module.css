@@ -1,0 +1,104 @@
+:root {
+    --graphite: #2f3e46;
+    --dark-graphite: #212b30;
+    --green: #52b788;
+    --light-green: #74c69d;
+    --danger: #e63946;
+    --text-light: #f1faee;
+    --border-color: #4e5d6c;
+    --success: #06d6a0;
+  }
+
+  .bookForm {
+    padding: 20px;
+    background-color: var(--graphite);
+    color: var(--text-light);
+    border-radius: 8px;
+    max-width: 900px;
+    width: 90%;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--light-green);
+  }
+
+  @media (max-width: 768px) {
+    .title {
+      font-size: 20px;
+    }
+  
+    .bookForm {
+      padding: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .title {
+      font-size: 18px;
+    }
+  
+    .bookForm {
+      padding: 10px;
+    }
+  }
+
+  .input, .select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--dark-graphite);
+    color: var(--text-light);
+    transition: border 0.3s;
+  }
+  
+  .input:focus, .select:focus {
+    border-color: var(--light-green);
+    outline: none;
+  }
+
+  .button {
+    padding: 10px 20px;
+    background-color: var(--green);
+    color: var(--text-light);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%;
+    font-weight: bold;
+  }
+  
+  .button:hover {
+    background-color: var(--light-green);
+    transform: scale(1.05);
+  }
+  
+  .button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  .link {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .link a {
+    color: var(--light-green);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: bold;
+  }
+  
+  .link a:hover {
+    color: var(--green);
+    text-decoration: underline;
+  }
+  
